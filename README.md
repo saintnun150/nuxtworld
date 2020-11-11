@@ -1,20 +1,7 @@
 # nuxtworld
 
-## Build Setup
+## update
 
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### 1. init(2020.11.11)
+-- Nust.js + Vuetify.js 연동
+-- Main Home 및 Contact Page 작업 중
