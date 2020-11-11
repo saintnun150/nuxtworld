@@ -3,6 +3,6 @@
 ## update
 
 ### 1. init(2020.11.11)
--- Nust.js + Vuetify.js 연동
--- Main Home 및 Contact Page 작업 중
--- InterserctionObserver API를 통한 image 지연 로딩 
+ - Nust.js + Vuetify.js 연동
+ - Main Home 및 Contact Page 작업 중
+ - InterserctionObserver API를 통한 image 지연 로딩 
