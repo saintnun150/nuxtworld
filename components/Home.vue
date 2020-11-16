@@ -25,8 +25,8 @@ export default {
           link : '/profile'
         },
         {
-          title : 'project',
-          link : '/project'
+          title : 'feature',
+          link : '/feature'
         },
         {
           title : 'contact',

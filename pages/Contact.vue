@@ -15,7 +15,7 @@
     >
       <v-row>
         <v-text-field
-          class="contact-card-tf"
+          class="contact-card-tf mr-2"
           v-model="password"
           :rules="[rules.password, rules.length(6)]"
           filled
@@ -23,51 +23,44 @@
           counter="6"
           label="이름"
           style="min-height: 96px"
-          type="password"
+          type="text"
         />
+        <v-text-field
+          class="ml-2"
+          v-model="email"
+          :rules="[rules.email]"
+          filled
+          color="deep-purple"
+          label="이메일"
+          type="email"
+        ></v-text-field>
+      </v-row>
+      <v-row>
         <v-text-field
           class="contact-card-tf"
           v-model="phone"
           filled
           color="deep-purple"
-          label="Phone number"
+          label="연락처"
+          counter="13"
         />
       </v-row>
-      <v-row>2</v-row>
-      <v-text-field
-        v-model="email"
-        :rules="[rules.email]"
-        filled
-        color="deep-purple"
-        label="Email address"
-        type="email"
-      ></v-text-field>
-      <v-textarea
-        v-model="bio"
-        auto-grow
-        filled
-        color="deep-purple"
-        label="Bio"
-        rows="1"
-      ></v-textarea>
-      <v-checkbox
-        v-model="agreement"
-        :rules="[rules.required]"
-        color="deep-purple"
-      >
-        <template v-slot:label>
-          I agree to the&nbsp;
-          <a
-            href="#"
-            @click.stop.prevent="dialog = true"
-          >Terms of Service</a>
-          &nbsp;and&nbsp;
-          <a
-            href="#"
-            @click.stop.prevent="dialog = true"
-          >Privacy Policy</a>*
-        </template>
-      </v-checkbox>
+      <v-row id="contact-contents-row">
+        <v-select
+          :items="problemType"
+          label="Type of Contact"
+          dense
+        ></v-select>
+        <v-textarea
+          v-model="contents"
+          auto-grow
+          filled
+          color="deep-purple"
+          label="문의내용"
+          rows="1"
+          counter="2000"
+        ></v-textarea>
+      </v-row>
     </v-form>
     <v-divider></v-divider>
     <v-card-actions>
@@ -85,45 +78,9 @@
         color="deep-purple accent-4"
         depressed
       >
-        Submit
+        SEND
       </v-btn>
     </v-card-actions>
-    <v-dialog
-      v-model="dialog"
-      absolute
-      max-width="400"
-      persistent
-    >
-      <v-card>
-        <v-card-title class="headline grey lighten-3">
-          Legal
-        </v-card-title>
-        <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </v-card-text>
-        <v-divider></v-divider>
-        <v-card-actions>
-          <v-btn
-            text
-            @click="agreement = false, dialog = false"
-          >
-            No
-          </v-btn>
-          <v-spacer></v-spacer>
-          <v-btn
-            class="white--text"
-            color="deep-purple accent-4"
-            @click="agreement = true, dialog = false"
-          >
-            Yes
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </v-card>
 </template>
 
@@ -131,8 +88,6 @@
 export default {
   data: () => ({
     agreement: false,
-    bio: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts',
-    dialog: false,
     email: undefined,
     form: false,
     isLoading: false,
@@ -145,6 +100,8 @@ export default {
         '영문',
       required: v => !!v || 'This field is required',
     },
+    problemType : ['오류 문의', '요청&제안', '기타 문의'],
+    contents : ''
   }),
 }
 </script>
@@ -155,5 +112,9 @@ export default {
   .contact-card-tf {
     //margin-left: 20px;
   }
+}
+#contact-contents-row {
+  display: flex;
+  flex-direction: column;
 }
 </style>
