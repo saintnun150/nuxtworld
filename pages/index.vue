@@ -23,7 +23,7 @@
             <v-btn
               color="primary"
               nuxt
-              to="/inspire"
+              to="/interactive"
             >
               Continue
             </v-btn>
